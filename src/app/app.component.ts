@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import characters from '../assets/data';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -7,13 +7,27 @@ import characters from '../assets/data';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  characters = characters;
+  characters: any[] = [];
+
+  constructor(private httpClient: HttpClient) {}
 
   onClose(cardId: number) {
-    alert(`Simulamos que cerramos el personaje con id ${ cardId }`);
+    this.characters = this.characters.filter(character => character.id !== cardId);
   }
 
   onSearch(characterId: number) {
-    alert(characterId);
+    const baseUrl = 'https://rickandmortyapi.com/api/character';
+    if (this.characters.find(character => character.id === characterId)) {
+      alert('El personaje ya está agregado');
+    } else {
+      this.httpClient.get(`${ baseUrl }/${ characterId }`).subscribe(
+        (data: any) => {
+          this.characters = [...this.characters, data];
+        },
+        (error) => {
+          alert('No hay personajes con ese Id');
+        }
+      );
+    }
   }
 }

@@ -1,5 +1,8 @@
 <div>
+  <app-nav-bar 
+      (searchCharacterByIdEvent)='onSearch($event)' 
+      (randomSearchEvent)='onSearch($event)'
+  >
+  </app-nav-bar>
   <app-cards [characters]='characters' (deleteCardEvent)='onClose($event)'></app-cards>
-  <hr />
-  <app-search-bar (searchCharacterByIdEvent)='onSearch($event)'></app-search-bar>
 </div>
