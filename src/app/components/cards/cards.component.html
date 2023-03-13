@@ -1,0 +1,8 @@
+<div class='cards'>
+	<app-card 
+	    *ngFor='let character of characters' 
+	    [cardInfo] = character
+	    (deleteEvent)='onDeleteCard($event)'
+	>
+	</app-card>
+</div>

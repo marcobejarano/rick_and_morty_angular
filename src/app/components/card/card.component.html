@@ -1,0 +1,9 @@
+<div class='card'>
+    <button (click)='onDelete()' class='card__button'>X</button>
+    <div class='card__name'>{{ cardInfo.name }}</div>
+    <img [src]='cardInfo.image' [alt]='cardInfo.name' class='card__image' />
+    <div class='card__speciesGender'>
+        <div class='card__species'>Species: {{ cardInfo.species }}</div>
+        <div class='card__gender'>Gender: {{ cardInfo.gender }}</div>
+    </div>
+</div>

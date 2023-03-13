@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import characters from '../assets/data';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'rick_and_morty_angular';
+  characters = characters;
+
+  onClose(cardId: number) {
+    alert(`Simulamos que cerramos el personaje con id ${ cardId }`);
+  }
+
+  onSearch(characterId: number) {
+    alert(characterId);
+  }
 }
